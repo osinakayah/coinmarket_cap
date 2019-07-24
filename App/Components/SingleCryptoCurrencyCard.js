@@ -5,6 +5,7 @@ import styles from './Styles/SingleCryptoCurrencyCardStyle'
 import { Thumbnail, Text } from 'native-base'
 import { Fonts, Colors } from '../Themes'
 import { Col, Row, Grid } from 'react-native-easy-grid'
+import { LineChart, Grid as GraphGrid } from 'react-native-svg-charts'
 
 export default class SingleCryptoCurrencyCard extends Component {
   // Prop type warnings
@@ -18,6 +19,7 @@ export default class SingleCryptoCurrencyCard extends Component {
   }
 
   render () {
+    const data = [-0.112024, -3.56181, -0.320139]
     return (
       <View style={styles.container}>
         <Grid>
@@ -26,8 +28,17 @@ export default class SingleCryptoCurrencyCard extends Component {
           </Col>
           <Col size={3}>
             <Row>
-              <Col size={3}><Text style={{fontFamily: Fonts.type.base, color: Colors.accentColor, textAlign: 'left'}}>BTC</Text></Col>
-              <Col size={3} />
+              <Col size={2}><Text style={{fontFamily: Fonts.type.base, color: Colors.accentColor, textAlign: 'left'}}>BTC</Text></Col>
+              <Col size={4}>
+                <LineChart
+                  style={{ height: 25 }}
+                  data={data}
+                  svg={{ stroke: 'rgb(217, 65, 65)' }}
+                  contentInset={{ top: 20, bottom: 20 }}
+                >
+                  <GraphGrid />
+                </LineChart>
+              </Col>
               <Col size={3}><Text style={[{fontFamily: Fonts.type.base, textAlign: 'right', color: Colors.accentColor}]}>$9,1234</Text></Col>
             </Row>
             <Row>
