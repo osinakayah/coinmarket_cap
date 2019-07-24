@@ -8,14 +8,19 @@ export function * getCoinListSaga (api, action) {
   const { data } = action
   // make the call to the api
 
-  const response = yield call(api.getCoinListService, getStartAndEndLimit(data))
+  if (data) {
+    const response = yield call(api.getCoinListService, getStartAndEndLimit(data))
 
-  // success?
-  if (response.ok) {
+    // success?
+    if (response.ok) {
 
-    yield put(CoinListActions.coinListSuccess(response.data.data))
-  } else {
-    yield put(CoinListActions.coinListFailure(response.data.status.error_message))
+      yield put(CoinListActions.coinListSuccess(response.data.data))
+    } else {
+      yield put(CoinListActions.coinListFailure(response.data.status.error_message))
+    }
+  }
+  else {
+    yield put(CoinListActions.coinListFailure('Something went wrong'))
   }
 }
 
