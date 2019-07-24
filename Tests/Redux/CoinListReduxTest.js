@@ -9,12 +9,6 @@ test('request', () => {
   expect(state.error).toBeNull()
 })
 
-test('lazy load request', () => {
-  const page = 2
-  const state = reducer(INITIAL_STATE, Actions.coinListLazyLoadRequest({page}))
-  expect(state.lazyData.page).toBe(page)
-})
-
 test('success', () => {
   const payload = [
     {
@@ -29,16 +23,6 @@ test('success', () => {
   expect(state.error).toBeNull()
 })
 
-test('lazyload success', () => {
-  const lazyLoadedCoins = [
-    {
-      id: 2,
-      name: 'Etheruem'
-    }
-  ]
-  const state = reducer(INITIAL_STATE, Actions.coinListLazyLoadSuccess(lazyLoadedCoins))
-  expect(state.lazyLoadedCoins).toEqual(lazyLoadedCoins)
-})
 
 test('failure', () => {
   const error = 'Something went wrong'

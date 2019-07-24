@@ -2,5 +2,6 @@
 
 export default {
   // font scaling override - RN default is on
-  allowTextFontScaling: true
+  allowTextFontScaling: true,
+  pageNumber: 10
 }

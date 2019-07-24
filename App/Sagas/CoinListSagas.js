@@ -16,3 +16,7 @@ export function * getCoinListSaga (api, action) {
     yield put(CoinListActions.coinListFailure())
   }
 }
+
+export function getStartAndEndLimit (page) {
+  return {start: 1, limit: 1}
+}

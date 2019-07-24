@@ -6,10 +6,7 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   coinListRequest: ['data'],
   coinListSuccess: ['payload'],
-  coinListFailure: ['error'],
-
-  coinListLazyLoadRequest: ['lazyData'],
-  coinListLazyLoadSuccess: ['lazyLoadedCoins']
+  coinListFailure: ['error']
 })
 
 export const CoinListTypes = Types
@@ -19,10 +16,8 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   data: null,
-  lazyData: null,
   fetching: false,
   payload: [],
-  lazyLoadedCoins: [],
   error: null
 })
 
@@ -38,12 +33,6 @@ export const CoinListSelectors = {
 export const request = (state, { data }) =>
   state.merge({ fetching: true, data, payload: [] })
 
-export const lazyRequest = (state, {lazyData}) =>
-  state.merge({lazyData})
-
-export const lazySuccess = (state, {lazyLoadedCoins}) =>
-  state.merge({lazyLoadedCoins})
-
 // successful api lookup
 export const success = (state, { payload }) => {
   return state.merge({ fetching: false, error: null, payload })
@@ -58,7 +47,5 @@ export const failure = (state, {error}) =>
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.COIN_LIST_REQUEST]: request,
   [Types.COIN_LIST_SUCCESS]: success,
-  [Types.COIN_LIST_FAILURE]: failure,
-  [Types.COIN_LIST_LAZY_LOAD_REQUEST]: lazyRequest,
-  [Types.COIN_LIST_LAZY_LOAD_SUCCESS]: lazySuccess
+  [Types.COIN_LIST_FAILURE]: failure
 })
