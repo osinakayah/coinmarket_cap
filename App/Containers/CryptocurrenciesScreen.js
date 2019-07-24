@@ -12,6 +12,7 @@ import styles from './Styles/CryptocurrenciesScreenStyle'
 import SearchBar from '../Components/SearchBar'
 import CenterItem from '../Components/CenterItem'
 import SingleCryptoCurrencyCard from '../Components/SingleCryptoCurrencyCard'
+import CryptoCurrencyListHeader from '../Components/CryptoCurrencyListHeader'
 
 class CryptoCurrenciesScreen extends Component {
   render () {
@@ -34,7 +35,9 @@ class CryptoCurrenciesScreen extends Component {
               </Col>
             </Row>
           </Grid>
-
+          <CryptoCurrencyListHeader />
+          <SingleCryptoCurrencyCard />
+          <SingleCryptoCurrencyCard />
           <SingleCryptoCurrencyCard />
         </Content>
       </Container>
