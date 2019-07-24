@@ -2,25 +2,20 @@
 import { call, put } from 'redux-saga/effects'
 import CoinListActions from '../Redux/CoinListRedux'
 import Config from '../../App/Config/AppConfig'
-// import { CoinListSelectors } from '../Redux/CoinListRedux'
+import { CoinListSelectors } from '../Redux/CoinListRedux'
 
 export function * getCoinListSaga (api, action) {
   const { data } = action
   // make the call to the api
 
-  if (data) {
-    const response = yield call(api.getCoinListService, getStartAndEndLimit(data))
+  const response = yield call(api.getCoinListService, getStartAndEndLimit(data.page))
 
-    // success?
-    if (response.ok) {
+  // success?
+  if (response.ok) {
 
-      yield put(CoinListActions.coinListSuccess(response.data.data))
-    } else {
-      yield put(CoinListActions.coinListFailure(response.data.status.error_message))
-    }
-  }
-  else {
-    yield put(CoinListActions.coinListFailure('Something went wrong'))
+    yield put(CoinListActions.coinListSuccess(response.data.data))
+  } else {
+    yield put(CoinListActions.coinListFailure(response.data.status.error_message))
   }
 }
 

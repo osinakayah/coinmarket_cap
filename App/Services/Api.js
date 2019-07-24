@@ -14,7 +14,8 @@ const create = (baseURL = 'https://pro-api.coinmarketcap.com/') => {
     baseURL,
     // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'X-CMC_PRO_API_KEY': '66f4a5d9-12cc-4b5d-880f-8fa0534be728',
     },
     // 10 second timeout...
     timeout: 10000

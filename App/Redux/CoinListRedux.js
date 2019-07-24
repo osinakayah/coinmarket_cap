@@ -24,7 +24,7 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const CoinListSelectors = {
-  getData: state => state.data
+  getData: state => state.coinList
 }
 
 /* ------------- Reducers ------------- */

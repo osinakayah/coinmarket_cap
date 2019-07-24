@@ -6,8 +6,11 @@ import { expectSaga } from 'redux-saga-test-plan'
 
 test('Successful request for coinlist', function () {
   const page = 1
+  const data = {
+    page
+  }
   const response = require('../../App/Fixtures/coins.json')
-  return expectSaga(getCoinListSaga, FixtureAPI, {page})
+  return expectSaga(getCoinListSaga, FixtureAPI, {data})
     .put(CoinListActions.coinListSuccess(response.data))
     .run()
 })
@@ -20,8 +23,11 @@ test('Test convert page number to offset points', function () {
 
 test('failure request for coinlist', function () {
   const page = 0
+  const data = {
+    page
+  }
   const response = require('../../App/Fixtures/error.json')
-  return expectSaga(getCoinListSaga, FixtureAPI, {page})
+  return expectSaga(getCoinListSaga, FixtureAPI, {data})
     .put(CoinListActions.coinListFailure(response.status.error_message))
     .run()
-});
+})
