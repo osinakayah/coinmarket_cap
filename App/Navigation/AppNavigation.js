@@ -5,7 +5,7 @@ import { Icon } from 'native-base'
 import CryptoCurrenciesScreen from '../Containers/CryptocurrenciesScreen'
 import WatchListScreen from '../Containers/WatchListScreen'
 import ExchangesScreen from '../Containers/ExchangesScreen'
-import {Colors} from '../Themes'
+import {Colors, Fonts, Metrics} from '../Themes'
 
 
 const TabBarComponent = (props) => (<BottomTabBar {...props} />)
@@ -18,14 +18,14 @@ const PrimaryNav = createBottomTabNavigator({
   initialRouteName: 'CryptoCurrencies',
   tabBarComponent: (props) => <TabBarComponent
     {...props}
-    style={{ backgroundColor: Colors.primaryColor }}
+    style={{ backgroundColor: Colors.primaryColor, height: Metrics.navBarHeight}}
   />,
   defaultNavigationOptions: ({navigation}) => ({
 
     tabBarIcon: ({ focused }) => {
-
       const { routeName } = navigation.state
       let iconName, color
+
       if (routeName === 'CryptoCurrencies') {
         iconName = 'md-pie'
         color = focused ? Colors.fontColor : Colors.grey
@@ -44,6 +44,12 @@ const PrimaryNav = createBottomTabNavigator({
   }),
   tabBarOptions: {
     activeTintColor: Colors.fontColor,
+    labelStyle: Fonts.style.normal,
+    // tabStyle: {
+    //   borderTopColor: Colors.fontColor,
+    //   borderTopWidth: Metrics.extraSmallMargin,
+    //   borderTopStyle: 'solid'
+    // }
   },
 });
 

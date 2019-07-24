@@ -1,7 +1,7 @@
 const type = {
-  base: 'Avenir-Book',
-  bold: 'Avenir-Black',
-  emphasis: 'HelveticaNeue-Italic'
+  base: 'Nunito-Regular',
+  bold: 'Nunito-SemiBold',
+  emphasis: 'Nunito-SemiBold'
 }
 
 const size = {
@@ -45,7 +45,7 @@ const style = {
   },
   normal: {
     fontFamily: type.base,
-    fontSize: size.regular
+    fontSize: size.small
   },
   description: {
     fontFamily: type.base,
