@@ -1,6 +1,6 @@
 const colors = {
-  transparent: '#2E384B',
-  background: '#E5E5E5',
+  transparent: 'rgba(0, 0, 0, 0)',
+  background: '#2E384B',
   primaryColor: '#323F52',
   primaryDark: '#2E384B',
   accentColor: '#FFF',

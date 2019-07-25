@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import styles from './Styles/SingleCryptoCurrencyCardStyle'
 import { Thumbnail, Text } from 'native-base'
-import { Fonts, Colors } from '../Themes'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { LineChart, Grid as GraphGrid } from 'react-native-svg-charts'
+import { LineChart } from 'react-native-svg-charts'
 
-export default class SingleCryptoCurrencyCard extends Component {
+import styles from './Styles/SingleCryptoCurrencyCardStyle'
+import { Fonts, Colors } from '../Themes'
+
+
+export default class SingleCryptoCurrencyCard extends PureComponent {
   // Prop type warnings
   static propTypes = {
     posIndex: PropTypes.number.isRequired,
@@ -18,16 +20,16 @@ export default class SingleCryptoCurrencyCard extends Component {
     percentageChange: PropTypes.number.isRequired
   }
 
-  formatNumberAsCurency  = (num) => {
-    if (isNaN(num) === false){
-      num = parseFloat(num);
-      num = num.toFixed(2);
+  formatNumberAsCurrency = (num) => {
+    if (!isNaN(num)){
+      num = parseFloat(num)
+      num = num.toFixed(2)
     }
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
   render () {
-    const color = this.props.percentageChange > 0 ? 'green':'red'
+    const color = this.props.percentageChange > 0 ? 'green' : 'red'
     return (
       <View
         style={[styles.container, this.props.posIndex % 2 === 0 ? { backgroundColor: Colors.primaryColor } : { backgroundColor: Colors.primaryDark }]}>
@@ -48,10 +50,10 @@ export default class SingleCryptoCurrencyCard extends Component {
                 <LineChart
                   style={{ height: 25 }}
                   data={this.props.data}
+                  showGrid={false}
                   svg={{ stroke: color }}
                   contentInset={{ top: 20, bottom: 20 }}
                 >
-                  <GraphGrid/>
                 </LineChart>
               </Col>
               <Col size={3}><Text
@@ -59,7 +61,7 @@ export default class SingleCryptoCurrencyCard extends Component {
                   fontFamily: Fonts.type.base,
                   textAlign: 'right',
                   color: Colors.accentColor
-                }]}>{this.formatNumberAsCurency(this.props.price)}</Text></Col>
+                }]}>${this.formatNumberAsCurrency(this.props.price)}</Text></Col>
             </Row>
             <Row>
               <Col size={6}><Text style={{
@@ -74,7 +76,7 @@ export default class SingleCryptoCurrencyCard extends Component {
                   fontFamily: Fonts.type.base,
                   textAlign: 'right',
                   color: color
-                }}>{this.props.percentageChange}</Text></Col>
+                }}>%{this.props.percentageChange.toFixed(2)}</Text></Col>
             </Row>
           </Col>
         </Grid>

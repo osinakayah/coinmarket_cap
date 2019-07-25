@@ -45,11 +45,11 @@ const PrimaryNav = createBottomTabNavigator({
   tabBarOptions: {
     activeTintColor: Colors.fontColor,
     labelStyle: Fonts.style.normal,
-    // tabStyle: {
-    //   borderTopColor: Colors.fontColor,
-    //   borderTopWidth: Metrics.extraSmallMargin,
-    //   borderTopStyle: 'solid'
-    // }
+    tabStyle: {
+      borderTopColor: Colors.fontColor,
+      borderTopWidth: Metrics.extraSmallMargin,
+      borderTopStyle: 'solid'
+    }
   },
 });
 

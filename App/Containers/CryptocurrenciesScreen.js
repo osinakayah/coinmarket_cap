@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react'
-import { FlatList } from 'react-native'
-import { Container, Content, Header, Title, Icon, Spinner } from 'native-base'
+import { FlatList, View } from 'react-native'
+import PropTypes from 'prop-types'
+import { Container, Content, Header, Title, Icon, Spinner, Body, Right, Button } from 'native-base'
 import { connect } from 'react-redux'
-import { Colors, Fonts } from '../Themes'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import CoinListActions from '../Redux/CoinListRedux'
 
-// Styles
+
 import styles from './Styles/CryptocurrenciesScreenStyle'
+import CoinListActions from '../Redux/CoinListRedux'
 import SearchBar from '../Components/SearchBar'
 import CenterItem from '../Components/CenterItem'
+import { Colors, Fonts, Metrics } from '../Themes'
 import SingleCryptoCurrencyCard from '../Components/SingleCryptoCurrencyCard'
 import CryptoCurrencyListHeader from '../Components/CryptoCurrencyListHeader'
-import PropTypes from 'prop-types'
+
 
 class CryptoCurrenciesScreen extends PureComponent {
   static propTypes = {
@@ -66,33 +67,45 @@ class CryptoCurrenciesScreen extends PureComponent {
 
     return (
       <Container style={styles.container}>
-        <Header hasSubtitle={false} style={{ backgroundColor: Colors.primaryColor }}
+        <Header style={{ backgroundColor: Colors.primaryColor }}
                 androidStatusBarColor={Colors.primaryDark} iosBarStyle={'light-content'}>
-          <Title style={[Fonts.style.h6, { color: Colors.accentColor }]}>CoinMarketCap</Title>
+          <Body>
+            <Title style={[Fonts.style.h6, { color: Colors.accentColor }]}>CoinMarketCap</Title>
+          </Body>
+          <Right>
+            <Button transparent onPress={this._handleRefresh}>
+              <Icon style={{color: Colors.accentColor }} name='md-refresh' />
+            </Button>
+          </Right>
         </Header>
         <Content>
           <Grid>
             <Row>
               <Col size={3}>
-                <SearchBar/>
+                <SearchBar />
               </Col>
               <Col size={0.5}>
-                <CenterItem><Icon style={{ color: Colors.fontColor }} name={'md-menu'}/></CenterItem>
+                <CenterItem><Icon style={{ color: Colors.fontColor }} name={'md-menu'} /></CenterItem>
               </Col>
               <Col size={0.5}>
-                <CenterItem><Icon style={{ color: Colors.darkgrey }} name={'md-grid'}/></CenterItem>
+                <CenterItem><Icon style={{ color: Colors.darkgrey }} name={'md-grid'} /></CenterItem>
               </Col>
             </Row>
           </Grid>
 
-          <FlatList
-            ListHeaderComponent={<CryptoCurrencyListHeader/>}
-            onEndReachedThreshold={0.5}
-            onEndReached={this._handleLoadMore}
-            keyExtractor={this._keyExtractor}
-            renderItem={({ item, index }) => this._getSingleRow(item, index)}
-            ListFooterComponent={this._renderFooter}
-            data={coinList.payload}/>
+          <View style={{height: Metrics.screenHeight}}>
+            <FlatList
+              onRefresh={this._handleRefresh}
+              refreshing={coinList.fetching && this.state.page === 1}
+              ListHeaderComponent={<CryptoCurrencyListHeader />}
+              onEndReachedThreshold={0.5}
+              onEndReached={this._handleLoadMore}
+              keyExtractor={this._keyExtractor}x
+              renderItem={({ item, index }) => this._getSingleRow(item, index)}
+              ListFooterComponent={this._renderFooter}
+              data={coinList.payload} />
+          </View>
+
 
         </Content>
       </Container>
@@ -101,7 +114,6 @@ class CryptoCurrenciesScreen extends PureComponent {
 
   _renderFooter = () => {
     const { coinList } = this.props
-    // return <Spinner color={Colors.fontColor} />
     return coinList.fetching ? <Spinner color={Colors.fontColor} /> : null
   }
 }

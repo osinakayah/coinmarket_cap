@@ -1,20 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { View } from 'react-native'
 import styles from './Styles/CenterItemStyle'
 
-export default class CenterItem extends Component {
-  // Prop type warnings
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  }
 
+const CenterItem = (props) => (
+  <View style={styles.container}>
+    {props.children}
+  </View>
+)
 
-  render () {
-    return (
-      <View style={styles.container}>
-        {this.props.children}
-      </View>
-    )
-  }
-}
+export default CenterItem;
