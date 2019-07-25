@@ -31,7 +31,7 @@ export const CoinListSelectors = {
 
 // request the data from an api
 export const request = (state, { data }) =>
-  state.merge({ fetching: true, data, payload: [] })
+  state.merge({ fetching: true, data })
 
 // successful api lookup
 export const success = (state, { payload }) => {

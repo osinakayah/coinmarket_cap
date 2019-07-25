@@ -17,7 +17,8 @@ export function * getCoinListSaga (api, action) {
     yield put(CoinListActions.coinListSuccess([...data.payload, ...response.data.data]))
 
   } else {
-    yield put(CoinListActions.coinListFailure(response.data.status.error_message))
+    alert(JSON.stringify(response.data))
+    yield put(CoinListActions.coinListFailure("response.data.status.error_message"))
   }
 }
 

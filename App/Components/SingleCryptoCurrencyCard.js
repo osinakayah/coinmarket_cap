@@ -19,7 +19,7 @@ export default class SingleCryptoCurrencyCard extends Component {
   }
 
   formatNumberAsCurency  = (num) => {
-    if(isNaN(num) === false){
+    if (isNaN(num) === false){
       num = parseFloat(num);
       num = num.toFixed(2);
     }

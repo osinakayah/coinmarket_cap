@@ -50,15 +50,15 @@ class CryptoCurrenciesScreen extends PureComponent {
     })
   }
   _handleLoadMore = () => {
-    // const { coinList } = this.props
-    // const newPage = this.state.page + 1
-    // this.props.dispatchFetchCoins({
-    //   page: newPage,
-    //   payload: coinList.payload
-    // })
-    // this.setState({
-    //   page: newPage
-    // })
+    const { coinList } = this.props
+    const newPage = this.state.page + 1
+    this.props.dispatchFetchCoins({
+      page: newPage,
+      payload: coinList.payload
+    })
+    this.setState({
+      page: newPage
+    })
   }
 
   render () {
@@ -87,7 +87,7 @@ class CryptoCurrenciesScreen extends PureComponent {
 
           <FlatList
             ListHeaderComponent={<CryptoCurrencyListHeader/>}
-            onEndReachedThreshold={0.1}
+            onEndReachedThreshold={0.5}
             onEndReached={this._handleLoadMore}
             keyExtractor={this._keyExtractor}
             renderItem={({ item, index }) => this._getSingleRow(item, index)}
@@ -101,8 +101,8 @@ class CryptoCurrenciesScreen extends PureComponent {
 
   _renderFooter = () => {
     const { coinList } = this.props
-    return <Spinner color={Colors.fontColor} />
-    // return coinList.fetching ? <Spinner color={Colors.fontColor} /> : null
+    // return <Spinner color={Colors.fontColor} />
+    return coinList.fetching ? <Spinner color={Colors.fontColor} /> : null
   }
 }
 
