@@ -6,8 +6,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import { LineChart } from 'react-native-svg-charts'
 
 import styles from './Styles/SingleCryptoCurrencyCardStyle'
-import { Fonts, Colors } from '../Themes'
-
+import { Colors } from '../Themes'
 
 export default class SingleCryptoCurrencyCard extends PureComponent {
   // Prop type warnings
@@ -20,12 +19,11 @@ export default class SingleCryptoCurrencyCard extends PureComponent {
     percentageChange: PropTypes.number.isRequired
   }
 
-  formatNumberAsCurrency = (num) => {
-    if (!isNaN(num)){
-      num = parseFloat(num)
-      num = num.toFixed(2)
+  formatNumberAsCurrency = (amount) => {
+    if (!isNaN(amount)) {
+      amount = amount.toFixed(2)
     }
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return amount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
   render () {
@@ -41,11 +39,7 @@ export default class SingleCryptoCurrencyCard extends PureComponent {
           <Col size={3}>
             <Row>
               <Col size={2}><Text
-                style={{
-                  fontFamily: Fonts.type.base,
-                  color: Colors.accentColor,
-                  textAlign: 'left'
-                }}>{this.props.symbol}</Text></Col>
+                style={[styles.headerStyle, styles.leftSide]}>{this.props.symbol}</Text></Col>
               <Col size={4}>
                 <LineChart
                   style={{ height: 25 }}
@@ -53,30 +47,20 @@ export default class SingleCryptoCurrencyCard extends PureComponent {
                   showGrid={false}
                   svg={{ stroke: color }}
                   contentInset={{ top: 20, bottom: 20 }}
-                >
-                </LineChart>
+                />
               </Col>
               <Col size={3}><Text
-                style={[{
-                  fontFamily: Fonts.type.base,
-                  textAlign: 'right',
-                  color: Colors.accentColor
-                }]}>${this.formatNumberAsCurrency(this.props.price)}</Text></Col>
+                style={[styles.headerStyle, styles.rightSide]}>${this.formatNumberAsCurrency(this.props.price)}</Text></Col>
             </Row>
             <Row>
-              <Col size={6}><Text style={{
-                fontSize: 13,
-                fontFamily: Fonts.type.base,
-                color: Colors.darkgrey,
-                textAlign: 'left'
-              }}>{this.props.name}</Text></Col>
-              <Col size={3}><Text
-                style={{
-                  fontSize: 13,
-                  fontFamily: Fonts.type.base,
-                  textAlign: 'right',
-                  color: color
-                }}>%{this.props.percentageChange.toFixed(2)}</Text></Col>
+              <Col size={6}><Text style={[styles.headerStyle, styles.leftSide, {
+                fontSize: 12,
+                color: Colors.darkgrey
+              }]}>{this.props.name}</Text></Col>
+              <Col size={3}><Text style={[styles.headerStyle, styles.rightSide, {
+                fontSize: 12,
+                color: color
+              }]}>%{this.props.percentageChange.toFixed(2)}</Text></Col>
             </Row>
           </Col>
         </Grid>

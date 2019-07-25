@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../Themes'
+import { Metrics, Colors, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
@@ -11,5 +11,15 @@ export default StyleSheet.create({
 
     paddingLeft: Metrics.smallMargin,
     paddingRight: Metrics.smallMargin
+  },
+  headerStyle: {
+    fontFamily: Fonts.type.base,
+    color: Colors.accentColor
+  },
+  leftSide: {
+    textAlign: 'left'
+  },
+  rightSide: {
+    textAlign: 'right'
   }
 })
