@@ -4,12 +4,10 @@ import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
-
-
+import {CoinListTypes } from '../Redux/CoinListRedux'
 
 /* ------------- Sagas ------------- */
-
-
+import {getCoinListSaga} from './CoinListSagas'
 
 /* ------------- API ------------- */
 
@@ -21,6 +19,6 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 export default function * root () {
   yield all([
-
+    takeLatest(CoinListTypes.COIN_LIST_REQUEST, getCoinListSaga, api)
   ])
 }

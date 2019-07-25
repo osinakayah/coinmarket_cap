@@ -4,14 +4,17 @@ import { getCoinListSaga, getStartAndEndLimit } from '../../App/Sagas/CoinListSa
 import CoinListActions from '../../App/Redux/CoinListRedux'
 import { expectSaga } from 'redux-saga-test-plan'
 
+
 test('Successful request for coinlist', function () {
-  const page = 1
+
   const data = {
-    page
+    page: 1,
+    payload: []
   }
   const response = require('../../App/Fixtures/coins.json')
+
   return expectSaga(getCoinListSaga, FixtureAPI, {data})
-    .put(CoinListActions.coinListSuccess(response.data))
+    .put(CoinListActions.coinListSuccess(response.data.concat(data.payload)))
     .run()
 })
 
