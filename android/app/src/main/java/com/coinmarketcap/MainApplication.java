@@ -5,8 +5,6 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,8 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new SvgPackage(),
             new VectorIconsPackage(),
-            new RNDeviceInfo(),
-            new ReactNativeConfigPackage(),
             new RNGestureHandlerPackage()
       );
     }
