@@ -1,18 +1,56 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
-import LaunchScreen from '../Containers/LaunchScreen'
+import { createAppContainer, createBottomTabNavigator, BottomTabBar } from 'react-navigation'
+import React from 'react'
+import { Icon } from 'native-base'
 
-import styles from './Styles/NavigationStyles'
+import CryptoCurrenciesScreen from '../Containers/CryptocurrenciesScreen'
+import WatchListScreen from '../Containers/WatchListScreen'
+import ExchangesScreen from '../Containers/ExchangesScreen'
+import {Colors, Fonts, Metrics} from '../Themes'
 
-// Manifest of possible screens
-const PrimaryNav = createStackNavigator({
-  LaunchScreen: { screen: LaunchScreen }
+
+const TabBarComponent = (props) => (<BottomTabBar {...props} />)
+
+const PrimaryNav = createBottomTabNavigator({
+  Exchanges: ExchangesScreen,
+  CryptoCurrencies: CryptoCurrenciesScreen,
+  WatchList: WatchListScreen
 }, {
-  // Default config for all screens
-  headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
-  navigationOptions: {
-    headerStyle: styles.header
-  }
-})
+  initialRouteName: 'CryptoCurrencies',
+  tabBarComponent: (props) => <TabBarComponent
+    {...props}
+    style={{ backgroundColor: Colors.primaryColor, height: Metrics.navBarHeight}}
+  />,
+  defaultNavigationOptions: ({navigation}) => ({
+
+    tabBarIcon: ({ focused }) => {
+      const { routeName } = navigation.state
+      let iconName, color
+
+      if (routeName === 'CryptoCurrencies') {
+        iconName = 'md-pie'
+        color = focused ? Colors.fontColor : Colors.grey
+      }
+      else if (routeName === 'WatchList') {
+        iconName = 'md-stopwatch'
+        color = focused ? Colors.fontColor : Colors.grey
+      }
+      else if (routeName === 'Exchanges') {
+        iconName = 'md-swap'
+        color = focused ? Colors.fontColor : Colors.grey
+      }
+
+      return <Icon name={iconName} style={{color: color}} />
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: Colors.fontColor,
+    labelStyle: Fonts.style.normal,
+    tabStyle: {
+      borderTopColor: Colors.fontColor,
+      borderTopWidth: Metrics.extraSmallMargin,
+      borderTopStyle: 'solid'
+    }
+  },
+});
 
 export default createAppContainer(PrimaryNav)

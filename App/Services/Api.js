@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://pro-api.coinmarketcap.com/') => {
   // ------
   // STEP 1
   // ------
@@ -12,9 +12,9 @@ const create = (baseURL = 'https://api.github.com/') => {
   const api = apisauce.create({
     // base URL is read from the "constructor"
     baseURL,
-    // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'X-CMC_PRO_API_KEY': '66f4a5d9-12cc-4b5d-880f-8fa0534be728',
     },
     // 10 second timeout...
     timeout: 10000
@@ -34,9 +34,10 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+
+  const getCoinListService = ({start, limit}) => {
+    return api.get('v1/cryptocurrency/listings/latest', {start, limit})
+  }
 
   // ------
   // STEP 3
@@ -52,9 +53,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   return {
     // a list of the API functions from step 2
-    getRoot,
-    getRate,
-    getUser
+    getCoinListService,
   }
 }
 

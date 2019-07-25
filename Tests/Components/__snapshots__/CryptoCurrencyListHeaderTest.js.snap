@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CenterItem component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#323F52",
+      "flex": 1,
+      "padding": 7,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      size={0.5}
+      style={
+        Object {
+          "flex": 0.5,
+          "flexDirection": "column",
+        }
+      }
+    />
+    <View
+      size={3}
+      style={
+        Object {
+          "flex": 3,
+          "flexDirection": "column",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          size={3}
+          style={
+            Object {
+              "flex": 3,
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#FFF",
+                "fontFamily": "Nunito-SemiBold",
+                "textAlign": "left",
+              }
+            }
+          >
+            Symbol
+          </Text>
+        </View>
+        <View
+          size={3}
+          style={
+            Object {
+              "flex": 3,
+              "flexDirection": "column",
+            }
+          }
+        />
+        <View
+          size={3}
+          style={
+            Object {
+              "flex": 3,
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#FFF",
+                  "fontFamily": "Nunito-SemiBold",
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Price
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          size={6}
+          style={
+            Object {
+              "flex": 6,
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#FFF",
+                "fontFamily": "Nunito-SemiBold",
+                "textAlign": "left",
+              }
+            }
+          >
+            Name
+          </Text>
+        </View>
+        <View
+          size={3}
+          style={
+            Object {
+              "flex": 3,
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#FFF",
+                  "fontFamily": "Nunito-SemiBold",
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            % Change
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
