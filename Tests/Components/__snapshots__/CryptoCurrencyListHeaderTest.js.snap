@@ -55,11 +55,15 @@ exports[`CenterItem component renders correctly 1`] = `
         >
           <Text
             style={
-              Object {
-                "color": "#FFF",
-                "fontFamily": "Nunito-SemiBold",
-                "textAlign": "left",
-              }
+              Array [
+                Object {
+                  "color": "#FFF",
+                  "fontFamily": "Nunito-SemiBold",
+                },
+                Object {
+                  "textAlign": "left",
+                },
+              ]
             }
           >
             Symbol
@@ -89,6 +93,8 @@ exports[`CenterItem component renders correctly 1`] = `
                 Object {
                   "color": "#FFF",
                   "fontFamily": "Nunito-SemiBold",
+                },
+                Object {
                   "textAlign": "right",
                 },
               ]
@@ -117,11 +123,15 @@ exports[`CenterItem component renders correctly 1`] = `
         >
           <Text
             style={
-              Object {
-                "color": "#FFF",
-                "fontFamily": "Nunito-SemiBold",
-                "textAlign": "left",
-              }
+              Array [
+                Object {
+                  "color": "#FFF",
+                  "fontFamily": "Nunito-SemiBold",
+                },
+                Object {
+                  "textAlign": "left",
+                },
+              ]
             }
           >
             Name
@@ -142,6 +152,8 @@ exports[`CenterItem component renders correctly 1`] = `
                 Object {
                   "color": "#FFF",
                   "fontFamily": "Nunito-SemiBold",
+                },
+                Object {
                   "textAlign": "right",
                 },
               ]

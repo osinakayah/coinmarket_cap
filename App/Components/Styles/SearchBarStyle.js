@@ -10,5 +10,12 @@ export default StyleSheet.create({
   },
   inputStyle: {
     color: Colors.accentColor
+  },
+  itemStyle: {
+    borderColor: 'transparent'
+  },
+  searchIconStyle: {
+    color: Colors.darkgrey,
+    paddingLeft: Metrics.marginHorizontal
   }
 })
